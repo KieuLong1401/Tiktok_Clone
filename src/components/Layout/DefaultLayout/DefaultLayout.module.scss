@@ -3,6 +3,7 @@
     display: flex;
 }
 .content {
-    height: calc(100vh - 60px);
+    min-height: calc(100vh - var(--headerHeight));
+    min-width: calc(100vw - var(--sidebarWidth));
     overflow-y: scroll;
 }
