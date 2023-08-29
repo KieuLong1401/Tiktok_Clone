@@ -2,4 +2,4 @@ function Following() {
     return <h2>Following page</h2>
 }
 
-export default Following;
+export default Following
