@@ -67,6 +67,8 @@ function Header() {
                     <button className={styles.searchBtn}>
                         <FontAwesomeIcon
                             icon={faMagnifyingGlass}
+                            color='#96969B'
+                            size='lg'
                             className='icon'
                         />
                     </button>

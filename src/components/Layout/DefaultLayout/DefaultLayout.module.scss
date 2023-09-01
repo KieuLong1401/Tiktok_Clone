@@ -1,3 +1,6 @@
+.wrapper {
+    overflow-y: scroll;
+}
 .container {
     margin-top: 60px;
     display: flex;
@@ -5,5 +8,4 @@
 .content {
     min-height: calc(100vh - var(--headerHeight));
     min-width: calc(100vw - var(--sidebarWidth));
-    overflow-y: scroll;
 }
