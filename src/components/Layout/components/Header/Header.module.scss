@@ -4,8 +4,58 @@
     box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.12);
     position: fixed;
     top: 0;
-}
-.inner {
-    height: 100%;
-    padding: 0 24px 0 16px;
+    .inner {
+        height: 100%;
+        padding: 0 24px 0 16px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        .logo {
+            width: 300px;
+            display: flex;
+            align-items: center;
+        }
+        .searchBar {
+            width: 500px;
+            height: 46px;
+            border: 1px solid rgba(22, 24, 35, 0.12);
+            border-radius: 92px;
+            background-color: rgba(22, 24, 35, 0.06);
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+            input {
+                width: 391px;
+                height: 21px;
+                border: none;
+                background-color: transparent;
+            }
+            .closeBtn {
+                width: 40px;
+                border: none;
+                background-color: transparent;
+            }
+            .loadingIcon {
+                display: none;
+            }
+            .searchBtn {
+                width: 52px;
+                height: 30px;
+                border: none;
+                background-color: transparent;
+                border-left: 1px solid rgba(22, 24, 35, 0.12);
+            }
+        }
+        .buttonContainer {
+            width: 270px;
+            height: 36px;
+            display: flex;
+            .uploadBtn {
+            }
+            .loginBtn {
+            }
+            .moreMenuIcon {
+            }
+        }
+    }
 }

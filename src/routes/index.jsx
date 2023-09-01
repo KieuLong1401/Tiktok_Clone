@@ -8,15 +8,13 @@ import Search from '../pages/Search'
 
 // public routes
 const publicRoutes = [
-    {path: '/', component: Home},
-    {path: '/following', component: Following},
-    {path: '/upload', component: Upload, layout: HeaderOnly},
-    {path: '/search', component: Search, layout: null},
+    { path: '/', component: Home },
+    { path: '/following', component: Following },
+    { path: '/upload', component: Upload, layout: HeaderOnly },
+    { path: '/search', component: Search, layout: null },
 ]
 
 // private routes
-const privateRoutes = [
-
-]
+const privateRoutes = []
 
 export { publicRoutes, privateRoutes }

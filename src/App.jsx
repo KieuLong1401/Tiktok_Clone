@@ -4,31 +4,32 @@ import { publicRoutes } from './routes'
 import { DefaultLayout } from './components/Layout'
 
 export default function App() {
+    return (
+        <Router>
+            <div className='App'>
+                <Routes>
+                    {publicRoutes.map((route, index) => {
+                        const Page = route.component
+                        const Layout = route.layout
+                            ? route.layout
+                            : route.layout === null
+                            ? Fragment
+                            : DefaultLayout
 
-  return (
-    <Router>
-      <div className='App'>
-        <Routes>
-          {publicRoutes.map((route, index) => {
-            const Page = route.component
-            const Layout = route.layout ? route.layout :
-              route.layout === null ? Fragment :
-                DefaultLayout
-
-            return (
-              <Route
-                key={index}
-                path={route.path}
-                element={
-                  <Layout>
-                    <Page />
-                  </Layout>
-                }
-              />
-            )
-          })}
-        </Routes>
-      </div>
-    </Router>
-  )
+                        return (
+                            <Route
+                                key={index}
+                                path={route.path}
+                                element={
+                                    <Layout>
+                                        <Page />
+                                    </Layout>
+                                }
+                            />
+                        )
+                    })}
+                </Routes>
+            </div>
+        </Router>
+    )
 }
