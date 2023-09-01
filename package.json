@@ -26,5 +26,17 @@
     "eslint-plugin-react-refresh": "^0.4.3",
     "sass": "^1.66.1",
     "vite": "^4.4.5"
-  }
+  },
+  "description": "This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.",
+  "main": "vite.config.js",
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/KieuLong1401/Tiktok_Clone.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/KieuLong1401/Tiktok_Clone/issues"
+  },
+  "homepage": "https://github.com/KieuLong1401/Tiktok_Clone#readme"
 }
