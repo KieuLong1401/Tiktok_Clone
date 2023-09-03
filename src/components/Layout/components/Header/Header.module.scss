@@ -1,4 +1,8 @@
 .wrapper {
+    --search-border-radius: 92px;
+    --search-height: 46px;
+    --logo-height: 42px;
+
     height: 60px;
     width: 100%;
     box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.12);
@@ -14,35 +18,67 @@
             width: 300px;
             display: flex;
             align-items: center;
+            height: var(--logo-height);
+            a {
+                height: 100%;
+            }
         }
         .searchBar {
             width: 500px;
-            height: 46px;
-            border-radius: 92px;
+            height: var(--search-height);
+            border: 1px solid transparent;
+            border-radius: var(--search-border-radius);
             background-color: rgba(22, 24, 35, 0.06);
             display: flex;
             justify-content: flex-end;
             align-items: center;
+            position: relative;
+            &::after{
+                content: "";
+                width: 1px;
+                height: calc(var(--search-height) - 18px);
+                background-color: #d6d6d6;
+                position: absolute;
+                right: 52px;
+            }
+            &:hover {
+                border-color: #b8b9bd;
+                .searchBtn {
+                    background-color: #e5e5e7;
+                }
+            }
+            &:focus-within {
+                border-color: #b8b9bd;
+            }
             input {
-                width: 391px;
+                width: 430px;
                 height: 21px;
                 border: none;
                 background-color: transparent;
+                &:focus {
+                    border: none;
+                    outline: none;
+                }
             }
-            .closeBtn {
+            .closeBtn, .loadingIcon {
                 width: 40px;
                 border: none;
                 background-color: transparent;
+                color: #a6a7ab;
+                position: absolute;
+                right: 52px;
             }
-            .loadingIcon {
-                display: none;
+            .loadingBtn {
+                visibility:hidden;
             }
             .searchBtn {
                 width: 52px;
-                height: 30px;
+                height: 100%;
+                border-top-right-radius: var(--search-border-radius);
+                border-bottom-right-radius: var(--search-border-radius);
                 border: none;
+                color: rgb(87, 86, 111);
                 background-color: transparent;
-                border-left: 1px solid rgba(22, 24, 35, 0.12);
             }
         }
         .buttonContainer {
@@ -51,6 +87,9 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
+            .uploadBtn:hover, .loginBtn:hover {
+                filter: brightness(96%);
+            }
             .uploadBtn {
                 width: 110px;
                 height: 100%;
@@ -67,6 +106,10 @@
                     display: flex;
                     justify-content: space-around;
                     align-items: center;
+                    background-color: transparent;
+                    span {
+                        background-color: transparent;
+                    }
                 }
             }
             .loginBtn {
