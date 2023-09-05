@@ -9,12 +9,28 @@ import {
     faEllipsisVertical,
 } from '@fortawesome/free-solid-svg-icons'
 
+import Tippy from '@tippyjs/react/headless'
+
+import { useEffect, useState } from 'react'
+
 function Header() {
+    const [searchResult, setSearchResult] = useState([])
+
+    const [visible, setVisible] = useState(false)
+    const show = () => setVisible(true)
+    const hide = () => setVisible(false)
+
+    useEffect(() => {
+        setTimeout(() => {
+            setSearchResult([1, 2, 3])
+        }, 3000)
+    }, [])
+
     return (
         <header className={styles.wrapper}>
             <div className={styles.inner}>
                 <div className={styles.logo}>
-                    <a href="/">
+                    <a href='/'>
                         <svg
                             xmlns='http://www.w3.org/2000/svg'
                             width='118'
@@ -48,31 +64,30 @@ function Header() {
                         </svg>
                     </a>
                 </div>
-                <div className={styles.searchBar}>
-                    <input
-                        type='text'
-                        placeholder='Search'
-                        spellCheck={false}
-                    />
-                    <button className={styles.closeBtn}>
+                <Tippy
+                    visible={visible && searchResult.length > 0}
+                    onClickOutside={hide}
+                    interactive
+                    render={(attrs) => (
+                        <div className={styles.searchResult} tabIndex='-1' {...attrs}>
+                            ket qua
+                        </div>
+                    )}>
+                    <div className={styles.searchBar}>
+                        <input type='text' placeholder='Search' spellCheck={false} onFocus={show} />
+                        <button className={styles.closeBtn}>
+                            <FontAwesomeIcon icon={faCircleXmark} className='icon' />
+                        </button>
                         <FontAwesomeIcon
-                            icon={faCircleXmark}
-                            className='icon'
+                            icon={faCircleNotch}
+                            className={'icon' + ' ' + styles.loadingIcon}
                         />
-                    </button>
-                    <FontAwesomeIcon
-                        icon={faCircleNotch}
-                        className={'icon' + ' ' + styles.loadingIcon}
-                    />
+                        <button className={styles.searchBtn}>
+                            <FontAwesomeIcon icon={faMagnifyingGlass} size='lg' className='icon' />
+                        </button>
+                    </div>
+                </Tippy>
 
-                    <button className={styles.searchBtn}>
-                        <FontAwesomeIcon
-                            icon={faMagnifyingGlass}
-                            size='lg'
-                            className='icon'
-                        />
-                    </button>
-                </div>
                 <div className={styles.buttonContainer}>
                     <div href='#' className={styles.uploadBtn}>
                         <a href='/upload'>
@@ -82,10 +97,7 @@ function Header() {
                     </div>
                     <button className={styles.loginBtn}>Login</button>
                     <div className={styles.moreMenuIcon}>
-                        <FontAwesomeIcon
-                            icon={faEllipsisVertical}
-                            className='icon'
-                        />
+                        <FontAwesomeIcon icon={faEllipsisVertical} className='icon' />
                     </div>
                 </div>
             </div>
