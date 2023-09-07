@@ -83,7 +83,7 @@ function Header() {
                             className={'icon' + ' ' + styles.loadingIcon}
                         />
                         <button className={styles.searchBtn}>
-                            <FontAwesomeIcon icon={faMagnifyingGlass} size='lg' className='icon' />
+                            <FontAwesomeIcon icon={faMagnifyingGlass} className='icon' />
                         </button>
                     </div>
                 </Tippy>
