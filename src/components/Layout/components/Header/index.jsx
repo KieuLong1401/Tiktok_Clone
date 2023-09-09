@@ -1,5 +1,6 @@
 import styles from './Header.module.scss'
 
+import { useEffect, useState } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {
     faCircleXmark,
@@ -10,8 +11,9 @@ import {
 } from '@fortawesome/free-solid-svg-icons'
 
 import Tippy from '@tippyjs/react/headless'
+import { default as PopperWrapper } from '../../.././Popper/Wrapper'
 
-import { useEffect, useState } from 'react'
+import AccountItem from '../../../AccountItem/index'
 
 function Header() {
     const [searchResult, setSearchResult] = useState([])
@@ -70,7 +72,13 @@ function Header() {
                     interactive
                     render={(attrs) => (
                         <div className={styles.searchResult} tabIndex='-1' {...attrs}>
-                            ket qua
+                            <PopperWrapper>
+                                <div className={styles.accountTitle}>Accounts</div>
+                                <AccountItem />
+                                <AccountItem />
+                                <AccountItem />
+                                <AccountItem />
+                            </PopperWrapper>
                         </div>
                     )}>
                     <div className={styles.searchBar}>

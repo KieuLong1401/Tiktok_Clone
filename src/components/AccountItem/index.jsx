@@ -1,0 +1,25 @@
+import styles from './AccountItem.module.scss'
+
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faCircleCheck } from '@fortawesome/free-solid-svg-icons'
+
+function AccountItem() {
+    return (
+        <div className={styles.wrapper}>
+            <img
+                className={styles.avatar}
+                src='https://p16-sign-sg.tiktokcdn.com/tos-alisg-avt-0068/a70040726c59e998be0bc29965982fde~c5_300x300.webp?x-expires=1694404800&x-signature=n%2FBQp1LXVg%2FlGKLe4ydmra073wM%3D'
+                alt='long'
+            />
+            <div className={styles.info}>
+                <p className={styles.userName}>
+                    <span>longdeptroai1401</span>
+                    <FontAwesomeIcon icon={faCircleCheck} color='#20D5EC' />
+                </p>
+                <span className={styles.name}>long dep troai</span>
+            </div>
+        </div>
+    )
+}
+
+export default AccountItem
