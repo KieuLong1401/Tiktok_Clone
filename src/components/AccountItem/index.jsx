@@ -12,11 +12,15 @@ function AccountItem() {
                 alt='long'
             />
             <div className={styles.info}>
-                <p className={styles.userName}>
+                <h4 className={styles.userName}>
                     <span>longdeptroai1401</span>
-                    <FontAwesomeIcon icon={faCircleCheck} color='#20D5EC' />
-                </p>
-                <span className={styles.name}>long dep troai</span>
+                    <FontAwesomeIcon
+                        icon={faCircleCheck}
+                        color='#20D5EC'
+                        className={styles.checkedIcon}
+                    />
+                </h4>
+                <p className={styles.name}>long dep troai</p>
             </div>
         </div>
     )
