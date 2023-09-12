@@ -14,6 +14,7 @@ import Tippy from '@tippyjs/react/headless'
 import { default as PopperWrapper } from '../../.././Popper/Wrapper'
 
 import AccountItem from '../../../AccountItem/index'
+import Button from '../../../Button'
 
 function Header() {
     const [searchResult, setSearchResult] = useState([])
@@ -24,7 +25,7 @@ function Header() {
 
     useEffect(() => {
         setTimeout(() => {
-            setSearchResult([1, 2,3])
+            setSearchResult([1, 2, 3])
         }, 3000)
     }, [])
 
@@ -97,27 +98,7 @@ function Header() {
                 </Tippy>
 
                 <div className={styles.buttonContainer}>
-                    <div href='#' className={styles.uploadBtn}>
-                        <a href='/upload'>
-                            <FontAwesomeIcon icon={faPlus} className='icon' />
-                            <span>Upload</span>
-                        </a>
-                    </div>
-                    <button className={styles.loginBtn}>Login</button>
-                    <Tippy
-                        visible={true}
-                        interactive
-                        render={(attrs) => (
-                            <div className={styles.menuPopper} tabIndex='-1' {...attrs}>
-                                <PopperWrapper>
-                                    menu
-                                </PopperWrapper>
-                            </div>
-                        )}>
-                        <div className={styles.moreMenuIcon}>
-                            <FontAwesomeIcon icon={faEllipsisVertical} className='icon' />
-                        </div>
-                    </Tippy>
+                    <Button>Log in</Button>
                 </div>
             </div>
         </header>

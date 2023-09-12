@@ -97,10 +97,14 @@
             }
         }
         .searchResult {
+            overflow: hidden;
+            min-height: 100px;
+            height: min((100vh - 96px) - 60px, 734px);
+            position: relative;
             .accountTitle {
                 height: 30px;
                 padding: 5px 12px;
-                font-size: 14px;
+                font-size: 1.4rem;
                 line-height: 18px;
                 letter-spacing: 0.093px;
                 font-weight: 600;
@@ -113,57 +117,6 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            .uploadBtn:hover,
-            .loginBtn:hover {
-                filter: brightness(96%);
-            }
-            .uploadBtn {
-                width: 110px;
-                height: 100%;
-                border: 1px black solid;
-                color: #161823;
-                font-weight: 600;
-                font-size: 16px;
-                line-height: 24px;
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                border: 1px solid rgba(22, 24, 35, 0.12);
-                div {
-                    display: flex;
-                    justify-content: space-around;
-                    align-items: center;
-                    background-color: transparent;
-                    span {
-                        background-color: transparent;
-                    }
-                }
-            }
-            .loginBtn {
-                width: 100px;
-                height: 100%;
-                background-color: #fe2c55;
-                border: none;
-                border-radius: 4px;
-                color: white;
-                font-weight: 700;
-                font-size: 16px;
-                line-height: 21px;
-                letter-spacing: 0.03px;
-                display: flex;
-                justify-content: center;
-                align-items: center;
-                padding: 6px 8px;
-            }
-            .moreMenuIcon {
-                width: 28px;
-                height: 100%;
-                display: flex;
-                justify-content: center;
-                align-items: center;
-            }
-            .menuPopper {
-            }
         }
     }
 }
