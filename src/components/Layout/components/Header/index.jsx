@@ -24,7 +24,7 @@ function Header() {
 
     useEffect(() => {
         setTimeout(() => {
-            setSearchResult([])
+            setSearchResult([1, 2,3])
         }, 3000)
     }, [])
 
@@ -104,9 +104,20 @@ function Header() {
                         </a>
                     </div>
                     <button className={styles.loginBtn}>Login</button>
-                    <div className={styles.moreMenuIcon}>
-                        <FontAwesomeIcon icon={faEllipsisVertical} className='icon' />
-                    </div>
+                    <Tippy
+                        visible={true}
+                        interactive
+                        render={(attrs) => (
+                            <div className={styles.menuPopper} tabIndex='-1' {...attrs}>
+                                <PopperWrapper>
+                                    menu
+                                </PopperWrapper>
+                            </div>
+                        )}>
+                        <div className={styles.moreMenuIcon}>
+                            <FontAwesomeIcon icon={faEllipsisVertical} className='icon' />
+                        </div>
+                    </Tippy>
                 </div>
             </div>
         </header>
