@@ -98,7 +98,8 @@ function Header() {
                 </Tippy>
 
                 <div className={styles.buttonContainer}>
-                    <Button>Log in</Button>
+                    <Button primary>Log in</Button>
+                    <Button reverse>Log in</Button>
                 </div>
             </div>
         </header>

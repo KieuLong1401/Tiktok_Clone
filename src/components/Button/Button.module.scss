@@ -1,0 +1,39 @@
+.wrapper {
+    min-width: 100px;
+    padding: 9px 16px;
+    font-size: 1.6rem;
+    font-weight: 700;
+    line-height: 21px;
+    border: 1px solid transparent;
+    border-radius: 4px;
+    cursor: pointer;
+    background-color: white;
+    + .wrapper {
+        margin-left: 16px;
+    }
+}
+.primary {
+    color: white;
+    background-color: var(--primary);
+    &:hover {
+        background: linear-gradient(0deg, rgba(0, 0, 0, 0.06), rgba(0, 0, 0, 0.06)), #fe2c55;
+    }
+}
+.reverse {
+    color: var(--primary);
+    border-color: currentColor;
+    border-radius: 2px;
+    &:hover {
+        background-color: rgba(254, 44, 85, 0.08);
+    }
+}
+.small {
+    min-width: 96px;
+    padding: 1px 15px;
+    line-height: 32px;
+}
+.large {
+    line-height: 34px;
+    min-width: 208px;
+    padding: 6px 8px;
+}
