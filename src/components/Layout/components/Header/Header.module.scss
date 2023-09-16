@@ -112,9 +112,19 @@
             }
         }
         .buttonContainer {
+            display: flex;
+            align-items: center;
             .plusIcon {
                 width: 10px;
                 margin-right: 8px;
+            }
+            .menuWrapper {
+                width: 20px;
+                min-height: 20px;
+                padding: 0 8px;
+                margin-left: 16px;
+                font-size: 20px;
+                background-color: transparent;
             }
         }
     }

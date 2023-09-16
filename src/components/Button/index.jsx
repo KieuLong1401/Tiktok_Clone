@@ -1,3 +1,4 @@
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import styles from './Button.module.scss'
 
 import { Link } from 'react-router-dom'
@@ -13,6 +14,8 @@ function Button({
     large = false,
     disabled = false,
     className,
+    leftIcon,
+    rightIcon,
     children,
     onClick,
     ...passProps
@@ -54,7 +57,9 @@ function Button({
 
     return (
         <Comp className={classes} {...props}>
-            <span>{children}</span>
+            {leftIcon && <span className={'icon' + ' ' + styles.icon}>{leftIcon}</span>}
+            <span className={styles.tittle}>{children}</span>
+            {rightIcon && <span className={'icon' + ' ' + styles.icon}>{leftIcon}</span>}
         </Comp>
     )
 }

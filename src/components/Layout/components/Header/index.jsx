@@ -7,6 +7,10 @@ import {
     faCircleNotch,
     faMagnifyingGlass,
     faPlus,
+    faEllipsisVertical,
+    faEarthAmerica,
+    faCircleQuestion,
+    faKeyboard,
 } from '@fortawesome/free-solid-svg-icons'
 
 import Tippy from '@tippyjs/react/headless'
@@ -14,6 +18,23 @@ import { default as PopperWrapper } from '../../.././Popper/Wrapper'
 
 import AccountItem from '../../../AccountItem/index'
 import Button from '../../../Button'
+import Menu from '../../../Popper/Menu'
+
+const MENU_ITEMS = [
+    {
+        icon: <FontAwesomeIcon icon={faEarthAmerica} />,
+        title: 'English',
+    },
+    {
+        icon: <FontAwesomeIcon icon={faCircleQuestion} />,
+        title: 'Feedback and help',
+        to: './feedback',
+    },
+    {
+        icon: <FontAwesomeIcon icon={faKeyboard} />,
+        title: 'Keyboard shortcuts',
+    },
+]
 
 function Header() {
     const [searchResult, setSearchResult] = useState([])
@@ -97,13 +118,17 @@ function Header() {
                 </Tippy>
 
                 <div className={styles.buttonContainer}>
-                    <Button text>
-                        <FontAwesomeIcon
-                            icon={faPlus}
-                            className={'icon' + ' ' + styles.plusIcon}></FontAwesomeIcon>
+                    <Button text leftIcon={<FontAwesomeIcon icon={faPlus} />}>
                         Upload
                     </Button>
                     <Button primary>Log in</Button>
+                    <Menu items={MENU_ITEMS}>
+                        <button className={styles.menuWrapper}>
+                            <FontAwesomeIcon
+                                icon={faEllipsisVertical}
+                                className='icon'></FontAwesomeIcon>
+                        </button>
+                    </Menu>
                 </div>
             </div>
         </header>
