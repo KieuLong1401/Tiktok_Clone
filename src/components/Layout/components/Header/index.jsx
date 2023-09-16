@@ -7,7 +7,6 @@ import {
     faCircleNotch,
     faMagnifyingGlass,
     faPlus,
-    faEllipsisVertical,
 } from '@fortawesome/free-solid-svg-icons'
 
 import Tippy from '@tippyjs/react/headless'
@@ -98,8 +97,13 @@ function Header() {
                 </Tippy>
 
                 <div className={styles.buttonContainer}>
+                    <Button text>
+                        <FontAwesomeIcon
+                            icon={faPlus}
+                            className={'icon' + ' ' + styles.plusIcon}></FontAwesomeIcon>
+                        Upload
+                    </Button>
                     <Button primary>Log in</Button>
-                    <Button reverse>Log in</Button>
                 </div>
             </div>
         </header>
