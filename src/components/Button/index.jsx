@@ -7,8 +7,12 @@ function Button({
     href,
     primary = false,
     reverse = false,
+    text = false,
+    rounded = false,
     small = false,
     large = false,
+    disabled = false,
+    className,
     children,
     onClick,
     ...passProps
@@ -18,6 +22,14 @@ function Button({
     const props = {
         onClick,
         ...passProps,
+    }
+
+    if (disabled) {
+        Object.keys(props).forEach((key) => {
+            if (key.startsWith('on') && typeof props[key] === 'function') {
+                delete props[key]
+            }
+        })
     }
 
     if (to) {
@@ -34,6 +46,10 @@ function Button({
     ${reverse ? styles.reverse : ''} 
     ${small ? styles.small : ''}
     ${large ? styles.large : ''}
+    ${text ? styles.text : ''}
+    ${disabled ? styles.disabled : ''}
+    ${rounded ? styles.rounded : ''}
+    ${className}
     `
 
     return (
