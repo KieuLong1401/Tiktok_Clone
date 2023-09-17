@@ -1,10 +1,12 @@
+import styles from './Menu.module.scss'
+
 import Button from '../../Button'
 
 function MenuItems({ data }) {
     return (
-        <div>
-            <Button leftIcon={data.icon}>{data.title}</Button>
-        </div>
+        <Button leftIcon={data.icon} to={data.to} className={styles.item}>
+            {data.title}
+        </Button>
     )
 }
 

@@ -1,3 +1,21 @@
-.content {
+.wrapper {
     width: 224px;
+    .list {
+        padding-bottom: 8px;
+        .item {
+            width: 100%;
+            display: flex;
+            justify-content: flex-start;
+            padding: 10px 8px 10px 16px;
+            margin: 0;
+            color: rgb(22, 24, 35);
+            font-weight: 600;
+            font-size: 16px;
+            border: none;
+            border-radius: 0;
+            &:hover {
+                background-color: rgba(22, 24, 35, 0.03);
+            }
+        }
+    }
 }

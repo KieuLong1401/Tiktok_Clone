@@ -8,9 +8,9 @@ import {
     faMagnifyingGlass,
     faPlus,
     faEllipsisVertical,
-    faEarthAmerica,
     faCircleQuestion,
     faKeyboard,
+    faGlobe,
 } from '@fortawesome/free-solid-svg-icons'
 
 import Tippy from '@tippyjs/react/headless'
@@ -22,7 +22,7 @@ import Menu from '../../../Popper/Menu'
 
 const MENU_ITEMS = [
     {
-        icon: <FontAwesomeIcon icon={faEarthAmerica} />,
+        icon: <FontAwesomeIcon icon={faGlobe} />,
         title: 'English',
     },
     {
