@@ -24,6 +24,21 @@ const MENU_ITEMS = [
     {
         icon: <FontAwesomeIcon icon={faGlobe} />,
         title: 'English',
+        child: {
+            headerTitle: 'Language',
+            data: [
+                {
+                    type: 'lang',
+                    title: 'English',
+                    code: 'en',
+                },
+                {
+                    type: 'lang',
+                    title: 'Tiếng Việt',
+                    code: 'vi',
+                },
+            ],
+        },
     },
     {
         icon: <FontAwesomeIcon icon={faCircleQuestion} />,
