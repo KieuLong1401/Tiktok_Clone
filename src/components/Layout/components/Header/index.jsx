@@ -1,4 +1,5 @@
 import styles from './Header.module.scss'
+import 'tippy.js/dist/tippy.css'
 
 import { useEffect, useState } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
@@ -11,9 +12,16 @@ import {
     faCircleQuestion,
     faKeyboard,
     faGlobe,
+    faPaperPlane,
+    faMessage,
+    faUser,
+    faFlag,
+    faCoins,
+    faGear,
+    faSignOut,
 } from '@fortawesome/free-solid-svg-icons'
-
-import Tippy from '@tippyjs/react/headless'
+import Tippy from '@tippyjs/react'
+import HeadlessTippy from '@tippyjs/react/headless'
 import { default as PopperWrapper } from '../../.././Popper/Wrapper'
 
 import AccountItem from '../../../AccountItem/index'
@@ -50,6 +58,64 @@ const MENU_ITEMS = [
         title: 'Keyboard shortcuts',
     },
 ]
+
+const USER_MENU_ITEMS = [
+    {
+        icon: <FontAwesomeIcon icon={faUser} />,
+        title: 'View profile',
+        to: './@user',
+    },
+    {
+        icon: <FontAwesomeIcon icon={faFlag} />,
+        title: 'Favorites',
+        to: './@user',
+    },
+    {
+        icon: <FontAwesomeIcon icon={faCoins} />,
+        title: 'Get coins',
+        to: './coin',
+    },
+    {
+        icon: <FontAwesomeIcon icon={faGear} />,
+        title: 'Setting',
+        to: './setting',
+    },
+    {
+        icon: <FontAwesomeIcon icon={faGlobe} />,
+        title: 'English',
+        child: {
+            headerTitle: 'Language',
+            data: [
+                {
+                    type: 'lang',
+                    title: 'English',
+                    code: 'en',
+                },
+                {
+                    type: 'lang',
+                    title: 'Tiếng Việt',
+                    code: 'vi',
+                },
+            ],
+        },
+    },
+    {
+        icon: <FontAwesomeIcon icon={faCircleQuestion} />,
+        title: 'Feedback and help',
+        to: './feedback',
+    },
+    {
+        icon: <FontAwesomeIcon icon={faKeyboard} />,
+        title: 'Keyboard shortcuts',
+    },
+    {
+        icon: <FontAwesomeIcon icon={faSignOut} />,
+        title: 'Log out',
+        compartment: true,
+    },
+]
+
+const user = true
 
 function Header() {
     const [searchResult, setSearchResult] = useState([])
@@ -102,7 +168,7 @@ function Header() {
                         </svg>
                     </a>
                 </div>
-                <Tippy
+                <HeadlessTippy
                     visible={visible && searchResult.length > 0}
                     onClickOutside={hide}
                     interactive
@@ -130,19 +196,45 @@ function Header() {
                             <FontAwesomeIcon icon={faMagnifyingGlass} className='icon' />
                         </button>
                     </div>
-                </Tippy>
+                </HeadlessTippy>
 
                 <div className={styles.buttonContainer}>
                     <Button text leftIcon={<FontAwesomeIcon icon={faPlus} />}>
                         Upload
                     </Button>
-                    <Button primary>Log in</Button>
-                    <Menu items={MENU_ITEMS}>
-                        <button className={styles.menuWrapper}>
-                            <FontAwesomeIcon
-                                icon={faEllipsisVertical}
-                                className='icon'></FontAwesomeIcon>
-                        </button>
+                    {user ? (
+                        <>
+                            <Tippy content='Messages'>
+                                <button className={styles.userBtn}>
+                                    <FontAwesomeIcon icon={faPaperPlane} className='icon' />
+                                </button>
+                            </Tippy>
+                            <Tippy content='Inbox'>
+                                <button className={styles.userBtn}>
+                                    <FontAwesomeIcon icon={faMessage} className='icon' />
+                                </button>
+                            </Tippy>
+                        </>
+                    ) : (
+                        <>
+                            <Button primary>Log in</Button>
+                        </>
+                    )}
+                    <Menu items={user ? USER_MENU_ITEMS : MENU_ITEMS}>
+                        {user ? (
+                            <button className={styles.userAvatar}>
+                                <img
+                                    src='https://p16-sign-sg.tiktokcdn.com/tos-alisg-avt-0068/a70040726c59e998be0bc29965982fde~c5_300x300.webp?x-expires=1694404800&x-signature=n%2FBQp1LXVg%2FlGKLe4ydmra073wM%3D'
+                                    alt='avatar'
+                                />
+                            </button>
+                        ) : (
+                            <button className={styles.menuWrapper}>
+                                <FontAwesomeIcon
+                                    icon={faEllipsisVertical}
+                                    className='icon'></FontAwesomeIcon>
+                            </button>
+                        )}
                     </Menu>
                 </div>
             </div>

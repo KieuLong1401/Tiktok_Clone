@@ -37,6 +37,7 @@ function Menu({ children, items = [] }) {
             interactive
             placement='bottom-end'
             delay={[null, 600]}
+            offset={[20, 12]}
             render={(attrs) => (
                 <div className={styles.wrapper} {...attrs}>
                     <PopperWrapper className={styles.list}>
