@@ -222,12 +222,10 @@ function Header() {
                     )}
                     <Menu items={user ? USER_MENU_ITEMS : MENU_ITEMS}>
                         {user ? (
-                            <button className={styles.userAvatar}>
-                                <img
+                                <img className={styles.userAvatar}
                                     src='https://p16-sign-sg.tiktokcdn.com/tos-alisg-avt-0068/a70040726c59e998be0bc29965982fde~c5_300x300.webp?x-expires=1694404800&x-signature=n%2FBQp1LXVg%2FlGKLe4ydmra073wM%3D'
                                     alt='avatar'
                                 />
-                            </button>
                         ) : (
                             <button className={styles.menuWrapper}>
                                 <FontAwesomeIcon
