@@ -1,0 +1,11 @@
+.wrapper, .fallBack {
+    overflow: hidden;
+    object-fit: cover;
+    background-color: transparent;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.fallBack {
+    background-color: rgb(233, 233, 233);
+}
