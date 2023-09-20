@@ -2,11 +2,12 @@ import styles from './AccountItem.module.scss'
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCircleCheck } from '@fortawesome/free-solid-svg-icons'
+import Image from '../Image'
 
 function AccountItem() {
     return (
         <div className={styles.wrapper}>
-            <img
+            <Image
                 className={styles.avatar}
                 src='https://p16-sign-sg.tiktokcdn.com/tos-alisg-avt-0068/a70040726c59e998be0bc29965982fde~c5_300x300.webp?x-expires=1694404800&x-signature=n%2FBQp1LXVg%2FlGKLe4ydmra073wM%3D'
                 alt='long'

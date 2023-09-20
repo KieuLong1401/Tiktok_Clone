@@ -28,6 +28,7 @@ import AccountItem from '../../../AccountItem/index'
 import Button from '../../../Button'
 import Menu from '../../../Popper/Menu'
 import Icon from '../../../Icon'
+import Image from '../../../Image'
 
 const MENU_ITEMS = [
     {
@@ -275,7 +276,7 @@ function Header() {
                     )}
                     <Menu items={user ? USER_MENU_ITEMS : MENU_ITEMS}>
                         {user ? (
-                            <img
+                            <Image
                                 className={styles.userAvatar}
                                 src='https://p16-sign-sg.tiktokcdn.com/tos-alisg-avt-0068/a70040726c59e998be0bc29965982fde~c5_300x300.webp?x-expires=1694404800&x-signature=n%2FBQp1LXVg%2FlGKLe4ydmra073wM%3D'
                                 alt='avatar'
