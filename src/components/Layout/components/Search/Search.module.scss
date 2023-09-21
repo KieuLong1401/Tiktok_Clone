@@ -42,19 +42,14 @@
         visibility: hidden;
     }
     .searchBtn {
-        padding: 12px 16px 9px 16px;
+        padding: 10px 14px 7px 14px;
         margin: -16px -16px;
         margin-left: 0;
         border-top-right-radius: var(--search-border-radius);
         border-bottom-right-radius: var(--search-border-radius);
         border: none;
         outline: none;
-        color: rgb(87, 86, 111);
         background-color: transparent;
-        svg {
-            width: 20px;
-            height: 20px;
-        }
     }
     &::after {
         content: '';
