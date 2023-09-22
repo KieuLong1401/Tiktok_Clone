@@ -14,15 +14,23 @@
     display: flex;
     align-items: center;
     position: relative;
-    input {
+    &:has(.searchInput:hover),
+    &:has(.searchBtn:hover) {
+        border-color: #b8b9bd;
+        .searchBtn {
+            background-color: #e5e5e7;
+            fill: black;
+        }
+    }
+    .searchInput {
         width: 430px;
         min-width: 0px;
         height: 21px;
         background-color: transparent;
         border: none;
-        &:focus {
-            border: none;
-            outline: none;
+        outline: none;
+        &:not(:placeholder-shown) ~ .searchBtn {
+            fill: black;
         }
     }
     .closeBtn,
@@ -50,6 +58,7 @@
         border: none;
         outline: none;
         background-color: transparent;
+        fill: rgba(22, 24, 35, 0.34);
     }
     &::after {
         content: '';
@@ -59,12 +68,7 @@
         position: absolute;
         right: 52px;
     }
-    &:hover {
-        border-color: #b8b9bd;
-        .searchBtn {
-            background-color: #e5e5e7;
-        }
-    }
+
     &:focus-within {
         border-color: #b8b9bd;
     }
