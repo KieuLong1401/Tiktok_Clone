@@ -13,16 +13,40 @@ function Search() {
     const [searchResult, setSearchResult] = useState([])
     const [visible, setVisible] = useState(false)
     const [inputValue, setInputValue] = useState('')
+    const [loading, setLoading] = useState(true)
+
     const searchInputRef = useRef(null)
+    const dataFetchTimeOut = useRef(null)
 
     const show = () => setVisible(true)
     const hide = () => setVisible(false)
 
+    function handleChangeSearchInput(input) {
+        clearTimeout(dataFetchTimeOut.current)
+        setInputValue(input)
+        if (!input) {
+            setSearchResult([])
+        }
+    }
+
     useEffect(() => {
-        setTimeout(() => {
-            setSearchResult([1, 2, 3])
-        }, 0)
-    }, [])
+        if (!!inputValue.trim()) {
+            dataFetchTimeOut.current = setTimeout(() => {
+                setLoading(true)
+                fetch(
+                    `https://tiktok.fullstack.edu.vn/api/users/search?q=${encodeURIComponent(
+                        inputValue
+                    )}&type=less`
+                )
+                    .then((res) => res.json())
+                    .then((res) => {
+                        setSearchResult(res.data)
+                        setLoading(false)
+                    })
+                    .catch((err) => {})
+            }, 500)
+        }
+    }, [inputValue])
 
     return (
         <HeadlessTippy
@@ -33,10 +57,15 @@ function Search() {
             render={(attrs) => (
                 <PopperWrapper className={styles.searchResult} tabIndex='-1' {...attrs}>
                     <div className={styles.accountTitle}>Accounts</div>
-                    <AccountItem />
-                    <AccountItem />
-                    <AccountItem />
-                    <AccountItem />
+                    {searchResult.map((data) => (
+                        <AccountItem
+                            data={data}
+                            key={data.id}
+                            onClick={() => {
+                                useEffect(handleChangeSearchInput(''), [])
+                            }}
+                        />
+                    ))}
                 </PopperWrapper>
             )}>
             <div className={styles.searchBar}>
@@ -46,24 +75,31 @@ function Search() {
                     spellCheck={false}
                     onFocus={show}
                     value={inputValue}
-                    onChange={(e) => setInputValue(e.target.value)}
+                    onChange={(e) => {
+                        if (!!e.target.value.trim() || !!inputValue) {
+                            handleChangeSearchInput(e.target.value)
+                        }
+                    }}
                     className={styles.searchInput}
                     ref={searchInputRef}
                 />
                 {inputValue && (
                     <>
-                        <button
-                            className={styles.closeBtn}
-                            onClick={() => {
-                                setInputValue('')
-                                searchInputRef.current.focus()
-                            }}>
-                            <FontAwesomeIcon icon={faCircleXmark} className='icon' />
-                        </button>
-                        <FontAwesomeIcon
-                            icon={faCircleNotch}
-                            className={'icon' + ' ' + styles.loadingIcon}
-                        />
+                        {loading ? (
+                            <FontAwesomeIcon
+                                icon={faCircleNotch}
+                                className={'icon' + ' ' + styles.loadingIcon}
+                            />
+                        ) : (
+                            <button
+                                className={styles.closeBtn}
+                                onClick={() => {
+                                    handleChangeSearchInput('')
+                                    searchInputRef.current.focus()
+                                }}>
+                                <FontAwesomeIcon icon={faCircleXmark} className='icon' />
+                            </button>
+                        )}
                     </>
                 )}
                 <Icon

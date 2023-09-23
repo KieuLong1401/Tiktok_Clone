@@ -46,8 +46,8 @@
     .closeBtn {
         z-index: 1;
     }
-    .loadingBtn {
-        visibility: hidden;
+    .loadingIcon {
+        animation: spin 1s linear infinite;
     }
     .searchBtn {
         padding: 10px 14px 7px 14px;
@@ -85,5 +85,14 @@
         letter-spacing: 0.093px;
         font-weight: 600;
         color: rgba(22, 24, 35, 0.5);
+    }
+}
+
+@keyframes spin {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
     }
 }

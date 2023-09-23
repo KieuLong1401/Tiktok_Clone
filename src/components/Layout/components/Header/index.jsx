@@ -154,7 +154,10 @@ function Header() {
                 <Search />
 
                 <div className={styles.buttonContainer}>
-                    <Button text leftIcon={<FontAwesomeIcon icon={faPlus} />}>
+                    <Button
+                        text
+                        leftIcon={<FontAwesomeIcon icon={faPlus} />}
+                        to={'/creator-center/upload'}>
                         Upload
                     </Button>
                     {user ? (
