@@ -1,13 +1,15 @@
+import { useDebounce } from '../../../../hooks'
 import { useState, useEffect, useRef } from 'react'
 
 import styles from './Search.module.scss'
 
-import HeadlessTippy from '@tippyjs/react/headless'
-import { default as PopperWrapper } from '../../../Popper/Wrapper'
-import AccountItem from '../../../AccountItem'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faCircleXmark, faCircleNotch, faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons'
 import Icon from '../../../Icon/index'
+import AccountItem from '../../../AccountItem'
+import HeadlessTippy from '@tippyjs/react/headless'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { default as PopperWrapper } from '../../../Popper/Wrapper'
+
+import { faCircleXmark, faCircleNotch, faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons'
 
 function Search() {
     const [searchResult, setSearchResult] = useState([])
@@ -18,35 +20,31 @@ function Search() {
     const searchInputRef = useRef(null)
     const dataFetchTimeOut = useRef(null)
 
+    const debouncedValue = useDebounce(inputValue, 500)
+
     const show = () => setVisible(true)
     const hide = () => setVisible(false)
 
-    function handleChangeSearchInput(input) {
-        clearTimeout(dataFetchTimeOut.current)
-        setInputValue(input)
-        if (!input) {
-            setSearchResult([])
-        }
-    }
-
     useEffect(() => {
-        if (!!inputValue.trim()) {
-            dataFetchTimeOut.current = setTimeout(() => {
-                setLoading(true)
-                fetch(
-                    `https://tiktok.fullstack.edu.vn/api/users/search?q=${encodeURIComponent(
-                        inputValue
-                    )}&type=less`
-                )
-                    .then((res) => res.json())
-                    .then((res) => {
-                        setSearchResult(res.data)
-                        setLoading(false)
-                    })
-                    .catch((err) => {})
-            }, 500)
+        if (!debouncedValue.trim()) {
+            setSearchResult([])
+            return
         }
-    }, [inputValue])
+
+        setLoading(true)
+
+        fetch(
+            `https://tiktok.fullstack.edu.vn/api/users/search?q=${encodeURIComponent(
+                debouncedValue
+            )}&type=less`
+        )
+            .then((res) => res.json())
+            .then((res) => {
+                setSearchResult(res.data)
+                setLoading(false)
+            })
+            .catch((err) => {})
+    }, [debouncedValue])
 
     return (
         <HeadlessTippy
@@ -62,7 +60,7 @@ function Search() {
                             data={data}
                             key={data.id}
                             onClick={() => {
-                                useEffect(handleChangeSearchInput(''), [])
+                                useEffect(setInputValue(''), [])
                             }}
                         />
                     ))}
@@ -77,7 +75,7 @@ function Search() {
                     value={inputValue}
                     onChange={(e) => {
                         if (!!e.target.value.trim() || !!inputValue) {
-                            handleChangeSearchInput(e.target.value)
+                            setInputValue(e.target.value)
                         }
                     }}
                     className={styles.searchInput}
@@ -94,7 +92,7 @@ function Search() {
                             <button
                                 className={styles.closeBtn}
                                 onClick={() => {
-                                    handleChangeSearchInput('')
+                                    setInputValue('')
                                     searchInputRef.current.focus()
                                 }}>
                                 <FontAwesomeIcon icon={faCircleXmark} className='icon' />
