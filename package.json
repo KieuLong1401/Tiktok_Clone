@@ -1,4 +1,5 @@
 {
+    "homepage": "https://kieulong1401.github.io/Tiktok_Clone",
     "name": "vite-project",
     "private": true,
     "version": "0.0.0",
@@ -48,6 +49,5 @@
     "license": "ISC",
     "bugs": {
         "url": "https://github.com/KieuLong1401/Tiktok_Clone/issues"
-    },
-    "homepage": "https://kieulong1401.github.io/Tiktok_Clone"
+    }
 }
