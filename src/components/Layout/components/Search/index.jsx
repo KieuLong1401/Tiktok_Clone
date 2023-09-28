@@ -10,6 +10,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { default as PopperWrapper } from '../../../Popper/Wrapper'
 
 import { faCircleXmark, faCircleNotch, faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons'
+import * as searchServices from '../../../../apiServices/searchServices'
 
 function Search() {
     const [searchResult, setSearchResult] = useState([])
@@ -18,7 +19,6 @@ function Search() {
     const [loading, setLoading] = useState(true)
 
     const searchInputRef = useRef(null)
-    const dataFetchTimeOut = useRef(null)
 
     const debouncedValue = useDebounce(inputValue, 500)
 
@@ -31,19 +31,15 @@ function Search() {
             return
         }
 
-        setLoading(true)
+        const fetchApi = async () => {
+            setLoading(true)
 
-        fetch(
-            `https://tiktok.fullstack.edu.vn/api/users/search?q=${encodeURIComponent(
-                debouncedValue
-            )}&type=less`
-        )
-            .then((res) => res.json())
-            .then((res) => {
-                setSearchResult(res.data)
-                setLoading(false)
-            })
-            .catch((err) => {})
+            const res = await searchServices.search(debouncedValue)
+            setSearchResult(res)
+
+            setLoading(false)
+        }
+        fetchApi()
     }, [debouncedValue])
 
     return (
