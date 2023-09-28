@@ -42,7 +42,7 @@
     "main": "vite.config.js",
     "repository": {
         "type": "git",
-        "url": "git+ssh://git@github.com/KieuLong1401/Tiktok_Clone.git"
+        "url": "https://github.com/KieuLong1401/Tiktok_Clone.git"
     },
     "author": "",
     "license": "ISC",
