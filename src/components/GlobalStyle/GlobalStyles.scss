@@ -5,6 +5,7 @@
     --headerHeight: 60px;
     --sidebarWidth: 240px;
     --textColor: rgba(22, 24, 35, 1);
+    --font-family: TikTokFont, Arial, Tahoma, sans-serif;
 }
 
 * {
@@ -18,7 +19,7 @@ html {
     width: 100vw;
 }
 body {
-    font-family: TikTokFont, Arial, Tahoma, sans-serif;
+    font-family: var(--font-family);
     font-size: 1.6rem;
     line-height: 1.5;
     text-rendering: optimizeSpeed;

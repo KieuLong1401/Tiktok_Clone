@@ -70,7 +70,7 @@ function Search() {
                     onFocus={show}
                     value={inputValue}
                     onChange={(e) => {
-                        if (!!e.target.value.trim() || !!inputValue) {
+                        if (!e.target.value.startsWith(' ')) {
                             setInputValue(e.target.value)
                         }
                     }}
