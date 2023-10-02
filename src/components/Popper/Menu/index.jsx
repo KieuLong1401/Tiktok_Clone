@@ -22,7 +22,6 @@ function Menu({ children, items = [] }) {
                     } else {
                         switch (item.type) {
                             case 'lang':
-                                console.log(item.code)
                                 break
                         }
                     }
@@ -50,7 +49,7 @@ function Menu({ children, items = [] }) {
                                 }}
                             />
                         )}
-                        {renderItems()}
+                        <div className={styles.menuItemsWrapper}>{renderItems()}</div>
                     </PopperWrapper>
                 </div>
             )}>

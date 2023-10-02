@@ -3,11 +3,14 @@
     --search-height: 46px;
     --logo-height: 42px;
 
-    height: 60px;
     width: 100%;
+    height: 60px;
+    background-color: white;
     box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.12);
     position: fixed;
     top: 0;
+    left: 0;
+    z-index: 10;
     .inner {
         height: 100%;
         padding: 0 24px 0 16px;
@@ -16,14 +19,13 @@
         align-items: center;
         .logo {
             min-width: 300px;
+            height: var(--logo-height);
             display: flex;
             align-items: center;
-            height: var(--logo-height);
             a {
                 height: 100%;
             }
         }
-
         .buttonContainer {
             display: flex;
             align-items: center;
@@ -34,22 +36,22 @@
             .menuWrapper {
                 width: 20px;
                 min-height: 20px;
+                background-color: transparent;
                 padding: 0 8px;
                 margin-left: 16px;
                 font-size: 20px;
-                background-color: transparent;
             }
             .userBtn {
                 margin-left: 16px;
-                cursor: pointer;
                 display: flex;
                 align-items: center;
+                cursor: pointer;
             }
             .userAvatar {
-                border-radius: 50%;
                 width: 32px;
                 height: 32px;
                 margin-left: 24px;
+                border-radius: 50%;
             }
         }
     }

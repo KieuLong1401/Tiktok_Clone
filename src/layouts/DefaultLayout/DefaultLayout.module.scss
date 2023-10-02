@@ -1,0 +1,8 @@
+.container {
+    margin-top: 60px;
+    display: flex;
+}
+.content {
+    width: calc(100vw - var(--sidebarWidth));
+    height: calc(100vh - var(--headerHeight));
+}

@@ -1,5 +1,9 @@
 .wrapper {
     width: 224px;
+    .menuItemsWrapper {
+        max-height: 590px;
+        overflow-y: overlay;
+    }
     .list {
         padding-bottom: 8px;
         .item {
@@ -26,18 +30,22 @@
 //header
 
 .header {
-    position: relative;
-    margin-top: -8px;
     height: 50px;
+    width: 100%;
+    background-color: white;
+    margin-top: -8px;
+    display: flex;
+    position: relative;
 }
 .backBtn {
     width: 48px;
     height: 100%;
     background-color: transparent;
-    display: flex;
+    font-size: 20px;
+    display: inline-flex;
     justify-content: flex-end;
     align-items: center;
-    font-size: 20px;
+    position: relative;
 }
 .headerTitle {
     position: absolute;
