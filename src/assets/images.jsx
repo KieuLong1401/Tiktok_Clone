@@ -1,1 +1,0 @@
-export const noImage = 'https://ilaindia.co.in/images/icons/nf.png'
