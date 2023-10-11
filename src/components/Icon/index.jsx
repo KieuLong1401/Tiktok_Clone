@@ -1,4 +1,5 @@
 import { useLocation } from 'react-router-dom'
+
 import { forwardRef, useState } from 'react'
 
 function Icon({ child, triggered, trigAt, trigOnClick, ...props }, ref) {

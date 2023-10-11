@@ -1,9 +1,11 @@
 import styles from './AccountItem.module.scss'
 
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faCircleCheck } from '@fortawesome/free-solid-svg-icons'
 import Image from '../Image'
 import { Link } from 'react-router-dom'
+import { faCircleCheck } from '@fortawesome/free-solid-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+
+import PropTypes from 'prop-types'
 
 function AccountItem({ data, onClick }) {
     return (
@@ -24,6 +26,11 @@ function AccountItem({ data, onClick }) {
             </div>
         </Link>
     )
+}
+
+AccountItem.propTypes = {
+    data: PropTypes.object.isRequired,
+    onClick: PropTypes.func,
 }
 
 export default AccountItem

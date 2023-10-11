@@ -1,10 +1,12 @@
 import styles from './Menu.module.scss'
 
 import Tippy from '@tippyjs/react/headless'
-import { default as PopperWrapper } from '../Wrapper'
-import MenuItems from './MenuItems'
 import Header from './Header'
+import MenuItems from './MenuItems'
 import { useState } from 'react'
+import { default as PopperWrapper } from '../Wrapper'
+
+import PropTypes from 'prop-types'
 
 function Menu({ children, items = [] }) {
     const [menuHistory, setMenuHistory] = useState([{ data: items }])
@@ -56,6 +58,11 @@ function Menu({ children, items = [] }) {
             {children}
         </Tippy>
     )
+}
+
+Menu.propTypes = {
+    children: PropTypes.node.isRequired,
+    items: PropTypes.array.isRequired,
 }
 
 export default Menu
