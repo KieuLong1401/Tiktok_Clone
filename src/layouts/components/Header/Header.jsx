@@ -20,7 +20,7 @@ import Icon from '../../../components/Icon'
 import Tippy from '@tippyjs/react'
 import Image from '../../../components/Image'
 import Button from '../../../components/Button'
-import Search from '../Search'
+import Search from '../Search/Search'
 
 import configs from '../../../configs'
 
