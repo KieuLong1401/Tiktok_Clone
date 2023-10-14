@@ -32,29 +32,35 @@ function Menu({ children, items = [] }) {
         ))
     }
 
+    const renderResult = (attrs) => (
+        <div className={styles.wrapper} {...attrs}>
+            <PopperWrapper className={styles.list}>
+                {menuHistory.length > 1 && (
+                    <Header
+                        title={currentMenu.headerTitle || ''}
+                        onBack={() => {
+                            setMenuHistory((pre) => pre.slice(0, menuHistory.length - 1))
+                        }}
+                    />
+                )}
+                <div className={styles.menuItemsWrapper}>{renderItems()}</div>
+            </PopperWrapper>
+        </div>
+    )
+
+    const resetMenu = () => {
+        setMenuHistory((pre) => pre.slice(0, 1))
+    }
+
     return (
         <Tippy
-            onHide={() => setMenuHistory((pre) => pre.slice(0, 1))}
+            onHide={resetMenu}
             interactive
             hideOnClick={false}
             placement='bottom-end'
             delay={[null, 600]}
             offset={[20, 12]}
-            render={(attrs) => (
-                <div className={styles.wrapper} {...attrs}>
-                    <PopperWrapper className={styles.list}>
-                        {menuHistory.length > 1 && (
-                            <Header
-                                title={currentMenu.headerTitle || ''}
-                                onBack={() => {
-                                    setMenuHistory((pre) => pre.slice(0, menuHistory.length - 1))
-                                }}
-                            />
-                        )}
-                        <div className={styles.menuItemsWrapper}>{renderItems()}</div>
-                    </PopperWrapper>
-                </div>
-            )}>
+            render={renderResult}>
             {children}
         </Tippy>
     )

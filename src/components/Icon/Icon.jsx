@@ -2,7 +2,9 @@ import { useLocation } from 'react-router-dom'
 
 import { forwardRef, useState } from 'react'
 
-function Icon({ child, triggered, trigAt, trigOnClick, ...props }, ref) {
+import PropTypes from 'prop-types'
+
+const Icon = forwardRef(({ child, triggered, trigAt, trigOnClick, ...props }, ref) => {
     const currentPath = useLocation()
     const [isTrig, setIsTrig] = useState(trigAt ? trigAt == currentPath.pathname : false)
 
@@ -12,19 +14,22 @@ function Icon({ child, triggered, trigAt, trigOnClick, ...props }, ref) {
         Tag = 'a'
     }
 
-    function changeTrigStatus() {
-        setIsTrig(!isTrig)
-    }
-
     return (
         <Tag
             ref={ref}
             {...props}
             href={trigAt ? trigAt : ''}
-            onClick={trigOnClick ? changeTrigStatus : () => {}}>
+            onClick={trigOnClick ? () => setIsTrig(!isTrig) : () => {}}>
             {!isTrig ? child : triggered}
         </Tag>
     )
+})
+
+Icon.propTypes = {
+    child: PropTypes.node.isRequired,
+    triggered: PropTypes.node,
+    trigAt: PropTypes.string,
+    trigOnClick: PropTypes.bool,
 }
 
-export default forwardRef(Icon)
+export default Icon

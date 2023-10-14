@@ -22,9 +22,6 @@ function Search() {
 
     const debouncedValue = useDebounce(inputValue, 500)
 
-    const show = () => setVisible(true)
-    const hide = () => setVisible(false)
-
     useEffect(() => {
         if (!debouncedValue.trim()) {
             setSearchResult([])
@@ -45,7 +42,7 @@ function Search() {
     return (
         <HeadlessTippy
             visible={visible && searchResult.length > 0 && inputValue}
-            onClickOutside={hide}
+            onClickOutside={() => setVisible(false)}
             interactive
             appendTo={document.body}
             render={(attrs) => (
@@ -67,7 +64,7 @@ function Search() {
                     type='text'
                     placeholder='Search'
                     spellCheck={false}
-                    onFocus={show}
+                    onFocus={() => setVisible(true)}
                     value={inputValue}
                     onChange={(e) => {
                         if (!e.target.value.startsWith(' ')) {
