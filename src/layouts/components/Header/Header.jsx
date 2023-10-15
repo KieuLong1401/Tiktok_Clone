@@ -190,7 +190,7 @@ function Header() {
                                                 d='M45.7321 7.00001C45.3748 6.3812 44.7146 6 44 6H4.00004C3.20826 6 2.49103 6.4671 2.17085 7.19125C1.85068 7.9154 1.98785 8.76026 2.52068 9.34592L12.9607 20.8209C13.5137 21.4288 14.3824 21.6365 15.1506 21.3445L29.65 15.8336C29.8188 15.7694 29.8953 15.796 29.9287 15.8092C29.9872 15.8325 30.0709 15.8928 30.1366 16.0041C30.2023 16.1154 30.2147 16.2179 30.2068 16.2802C30.2023 16.3159 30.1885 16.3958 30.0509 16.5125L18.1464 26.6098C17.5329 27.1301 17.2908 27.9674 17.5321 28.7348L22.0921 43.2398C22.33 43.9967 22.9928 44.5413 23.7815 44.628C24.5701 44.7147 25.3354 44.3271 25.7321 43.64L45.7321 9.00002C46.0894 8.38122 46.0894 7.61882 45.7321 7.00001Z'></path>
                                         </svg>
                                     }
-                                    trigAt={configs.routes.following}
+                                    trigAt={configs.routes.message}
                                     key='messageIcon'
                                     className={styles.userBtn}
                                 />
@@ -235,7 +235,7 @@ function Header() {
                         {user ? (
                             <Image
                                 className={styles.userAvatar}
-                                src='https://p16-sign-sg.tiktokcdn.com/aweme/100x100/tos-alisg-avt-0068/a70040726c59e998be0bc29965982fde.jpeg?x-expires=1696248000&x-signature=oFruTkZbfvWx7qBiieXAE%2BZrMiU%3D'
+                                src='https://www.bing.com/images/search?view=detailV2&ccid=m2RnL%2fcj&id=CC6E94D7DD2563FBC202AA275DB7CD6DF5A3855B&thid=OIP.m2RnL_cjmnSOwnkQRr2OqAHaEK&mediaurl=https%3a%2f%2fsetgis.net%2fimages%2fpop_cat.gif&exph=1080&expw=1920&q=Pop+Cat&simid=608007957707650423&FORM=IRPRST&ck=4A40D1B0A2492F0C3921EC13A0701D89&selectedIndex=3'
                                 alt='avatar'
                             />
                         ) : (

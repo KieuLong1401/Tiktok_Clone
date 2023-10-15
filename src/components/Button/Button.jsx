@@ -1,11 +1,12 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import styles from './Button.module.scss'
 
-import { Link } from 'react-router-dom'
+import { Link, useLocation } from 'react-router-dom'
 
 function Button({
     to,
     href,
+    activeTo = false,
     primary = false,
     reverse = false,
     text = false,
@@ -20,6 +21,8 @@ function Button({
     onClick,
     ...passProps
 }) {
+    const currentPath = useLocation().pathname
+
     let Comp = 'button'
 
     const props = {
@@ -52,9 +55,9 @@ function Button({
     ${text ? styles.text : ''}
     ${disabled ? styles.disabled : ''}
     ${rounded ? styles.rounded : ''}
+    ${activeTo && (currentPath == to || currentPath == href) ? styles.active : ''}
     ${className}
     `
-
     return (
         <Comp className={classes} {...props}>
             {leftIcon && <span className={'icon' + ' ' + styles.icon}>{leftIcon}</span>}

@@ -49,6 +49,9 @@ a {
     color: var(--textColor);
     text-decoration: none;
 }
+a:focus {
+    outline: none;
+}
 .icon {
     background-color: transparent;
 }

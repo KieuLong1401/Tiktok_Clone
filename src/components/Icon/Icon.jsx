@@ -1,24 +1,27 @@
 import { useLocation } from 'react-router-dom'
 
-import { forwardRef, useState } from 'react'
+import { forwardRef, useEffect, useState } from 'react'
 
 import PropTypes from 'prop-types'
 
-const Icon = forwardRef(({ child, triggered, trigAt, trigOnClick, ...props }, ref) => {
-    const currentPath = useLocation()
-    const [isTrig, setIsTrig] = useState(trigAt ? trigAt == currentPath.pathname : false)
+const Icon = forwardRef(({ child, triggered, trigAt, trigOnClick, link = true, ...props }, ref) => {
+    const currentPath = useLocation().pathname
+    const [isTrig, setIsTrig] = useState(trigAt ? trigAt == currentPath : false)
 
     var Tag = 'button'
-
-    if (trigAt) {
+    if (trigAt && link) {
         Tag = 'a'
     }
+
+    useEffect(() => {
+        setIsTrig(trigAt ? trigAt == currentPath : false)
+    }, [currentPath])
 
     return (
         <Tag
             ref={ref}
             {...props}
-            href={trigAt ? trigAt : ''}
+            href={trigAt && link ? trigAt : ''}
             onClick={trigOnClick ? () => setIsTrig(!isTrig) : () => {}}>
             {!isTrig ? child : triggered}
         </Tag>
