@@ -4,5 +4,8 @@
 }
 .content {
     width: calc(100vw - var(--sidebarWidth));
+    min-width: none;
     height: calc(100vh - var(--headerHeight));
+    margin-left: var(--sidebarWidth);
+    overflow-y: auto;
 }

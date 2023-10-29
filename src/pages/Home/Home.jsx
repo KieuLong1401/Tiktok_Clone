@@ -1,5 +1,15 @@
+import styles from './Home.module.scss'
+
+import Video from '../../components/Video/Video'
+
 function Home() {
-    return <h2 style={{ height: 2000 }}>Home page</h2>
+    return (
+        <div className={styles.wrapper}>
+            <div className={styles.columnWrapper}>
+                <Video src={'public/testVideo.mp4'}></Video>
+            </div>
+        </div>
+    )
 }
 
 export default Home
