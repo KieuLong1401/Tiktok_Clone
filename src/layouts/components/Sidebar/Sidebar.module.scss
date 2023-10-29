@@ -2,6 +2,7 @@
     width: 240px;
     height: calc(100vh - var(--headerHeight));
     padding: 20px 8px 26px 8px;
+    position: fixed;
     button {
         svg {
             margin-bottom: -5px;
@@ -60,7 +61,7 @@
     }
 }
 .space {
-    height: 27px;
+    height: 40px;
 }
 footer {
     padding: 16px 0 0 8px;
@@ -106,8 +107,11 @@ footer {
                 top: 50%;
                 left: 50%;
                 transform: translate(-50%, -50%);
+                span {
+                    margin-left: 7px;
+                }
                 svg {
-                    margin-right: 9px;
+                    margin-right: 0px;
                     width: 19px;
                     height: 19px;
                     margin-top: 2px;
