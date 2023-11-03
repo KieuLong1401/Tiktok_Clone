@@ -1,0 +1,218 @@
+.wrapper {
+    width: 692px;
+    padding: 20px 0;
+    display: flex;
+    flex-direction: row;
+    position: relative;
+    // avatar
+    .avatar {
+        width: 56px;
+        height: 56px;
+        border-radius: 50%;
+    }
+    //video container
+    .videoContainer {
+        margin-left: 12px;
+        //info
+        .videoInfo {
+            width: 410px;
+            margin-bottom: 12px;
+            //author
+            .author {
+                &:hover {
+                    .authorNickName {
+                        text-decoration: underline;
+                    }
+                }
+                .authorNickName {
+                    font-weight: 700;
+                    font-size: 18px;
+                    line-height: 24px;
+                    display: inline-block;
+                    margin-right: 4px;
+                }
+                .authorName {
+                    font-weight: 400;
+                    font-size: 14px;
+                    display: inline-block;
+                    line-height: 28px;
+                }
+            }
+            //title
+            .videoTitleWrapper {
+                .videoTitle {
+                    font-weight: 400;
+                    font-size: 16px;
+                    line-height: 21px;
+                    word-break: break-word;
+                }
+                .hashtags {
+                    font-weight: 600;
+                    color: rgba(43, 93, 185, 1);
+                    font-size: 16px;
+                    line-height: 21px;
+                    word-break: break-word;
+                    &:hover {
+                        text-decoration: underline;
+                    }
+                    & + .hashtags {
+                        margin-left: 4px;
+                    }
+                }
+            }
+            //music
+            .music {
+                display: flex;
+                flex-direction: row;
+                align-items: center;
+                &:hover {
+                    .musicInfo {
+                        text-decoration: underline;
+                    }
+                }
+                svg {
+                    margin-right: 5px;
+                }
+                .musicInfo {
+                    display: flex;
+                    flex-direction: row;
+                    line-height: 21px;
+                    font-weight: 400;
+                    font-size: 14px;
+                    .musicName {
+                    }
+                    .singer {
+                    }
+                }
+            }
+        }
+        //video
+        .videoWrapper {
+            .video {
+                position: relative;
+                width: max-content;
+                height: max-content;
+                video {
+                    max-width: 600px;
+                    max-height: 600px;
+                    border-radius: 4px;
+                }
+                //controller
+                .videoController {
+                    position: absolute;
+                }
+                .moreIcon {
+                    width: 24px;
+                    height: 24px;
+                    top: 16px;
+                    right: 16px;
+                    color: white;
+                }
+                .moreIconPopper {
+                    transform: translateX(20px);
+                }
+                .videoPlayerIcon {
+                    width: 40px;
+                    height: 40px;
+                    padding: 10px;
+                    color: rgb(255, 255, 255);
+                    bottom: 38px;
+                    left: 12px;
+                    font-size: 23px;
+                }
+                .seekBarContainer {
+                    width: 100%;
+                    padding: 0 12px 0 12px;
+                    display: flex;
+                    align-items: center;
+                    bottom: 18px;
+                    left: 50%;
+                    transform: translateX(-50%);
+                    &:hover {
+                        .seekBar[type='range'] {
+                            height: 4px;
+                            &::-webkit-slider-thumb {
+                                display: block;
+                            }
+                        }
+                    }
+                    .seekBar[type='range'] {
+                        appearance: none;
+                        width: 100%;
+                        height: 2px;
+                        &::-webkit-slider-thumb {
+                            appearance: none;
+                            height: 12px;
+                            width: 12px;
+                            background-color: rgb(255, 255, 255);
+                            border-radius: 50%;
+                            transform: translateY(-4px);
+                            display: none;
+                        }
+                        &::-webkit-slider-runnable-track {
+                            height: 4px;
+                            width: 100%;
+                            cursor: pointer;
+                        }
+                        &::after {
+                            width: 20%;
+                            height: 4px;
+                            background-color: #9d3c3c;
+                        }
+                    }
+                    .seekBarTimer {
+                        min-width: 64px;
+                        margin-left: 8px;
+                        font-size: 10px;
+                        line-height: 16px;
+                        color: rgb(255, 255, 255);
+                        text-align: right;
+                    }
+                }
+                .volumeIcon {
+                    width: 40px;
+                    height: 40px;
+                    padding: 8px;
+                    bottom: 36px;
+                    right: 12px;
+                    color: white;
+                    font-size: 17px;
+                }
+                .volumeSlider {
+                    width: 64px;
+                    height: 24px;
+                    background: rgba(22, 24, 35, 0.34);
+                    border-radius: 32px;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    transform: rotate(270deg) translateX(10px);
+                    input {
+                        appearance: none;
+                        width: 48px;
+                        height: 2px;
+                        &::-webkit-slider-thumb {
+                            appearance: none;
+                            width: 12px;
+                            height: 12px;
+                            border-radius: 50%;
+                            background-color: white;
+                        }
+                        &::-webkit-slider-runnable-track {
+                            appearance: none;
+                        }
+                    }
+                }
+                //action
+                .actionContainer {
+                }
+            }
+        }
+    }
+    //follow
+    .followBtn {
+        position: absolute;
+        right: 0;
+        top: 28px;
+    }
+}
