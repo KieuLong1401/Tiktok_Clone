@@ -1,9 +1,7 @@
 import { useState } from 'react'
 
-function Slider({ fillColor, emptyColor, className, ...props }) {
-    const [inputValue, setInputValue] = useState(0)
-
-    var percent = (100 * (inputValue - props.min)) / (props.max - props.min)
+function Slider({ fillColor, emptyColor, className, value, ...props }) {
+    var percent = (100 * (value - props.min)) / (props.max - props.min)
 
     return (
         <input
@@ -12,8 +10,7 @@ function Slider({ fillColor, emptyColor, className, ...props }) {
             style={{
                 backgroundImage: `linear-gradient( to right, ${fillColor}, ${fillColor} ${percent}%, ${emptyColor} ${percent}%)`,
             }}
-            onChange={(e) => setInputValue(e.target.value)}
-            value={inputValue}
+            value={value}
             {...props}
         />
     )

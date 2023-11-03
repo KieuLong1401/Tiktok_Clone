@@ -5,7 +5,21 @@ import { forwardRef, useEffect, useState } from 'react'
 import PropTypes from 'prop-types'
 
 const Icon = forwardRef(
-    ({ className, child, triggered, trigAt, trigOnClick, link = true, ...props }, ref) => {
+    (
+        {
+            className,
+            child,
+            triggered,
+            trigAt,
+            trigOnClick,
+            link = true,
+            onClick = () => {},
+            isTriggering,
+            fixed,
+            ...props
+        },
+        ref
+    ) => {
         const currentPath = useLocation().pathname
         const [isTrig, setIsTrig] = useState(trigAt ? trigAt == currentPath : false)
 
@@ -18,14 +32,21 @@ const Icon = forwardRef(
             setIsTrig(trigAt ? trigAt == currentPath : false)
         }, [currentPath])
 
+        function iconOnClick() {
+            if (trigOnClick) {
+                setIsTrig(!isTrig)
+            }
+            onClick()
+        }
+
         return (
             <Tag
                 className={className}
                 ref={ref}
-                {...props}
                 href={trigAt && link ? trigAt : ''}
-                onClick={trigOnClick ? () => setIsTrig(!isTrig) : () => {}}>
-                {!isTrig ? child : triggered}
+                onClick={iconOnClick}
+                {...props}>
+                {fixed ? child : isTriggering ? triggered : isTrig ? triggered : child}
             </Tag>
         )
     }

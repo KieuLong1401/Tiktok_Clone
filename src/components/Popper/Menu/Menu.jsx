@@ -8,7 +8,7 @@ import { default as PopperWrapper } from '../Wrapper'
 
 import PropTypes from 'prop-types'
 
-function Menu({ children, items = [] }) {
+function Menu({ className, children, items = [], placement }) {
     const [menuHistory, setMenuHistory] = useState([{ data: items }])
     const currentMenu = menuHistory[menuHistory.length - 1]
 
@@ -33,7 +33,7 @@ function Menu({ children, items = [] }) {
     }
 
     const renderResult = (attrs) => (
-        <div className={styles.wrapper} {...attrs}>
+        <div className={`${styles.wrapper} ${className}`} {...attrs}>
             <PopperWrapper className={styles.list}>
                 {menuHistory.length > 1 && (
                     <Header
@@ -57,7 +57,7 @@ function Menu({ children, items = [] }) {
             onHide={resetMenu}
             interactive
             hideOnClick={false}
-            placement='bottom-end'
+            placement={placement || 'bottom-end'}
             delay={[null, 600]}
             offset={[20, 12]}
             render={renderResult}>
